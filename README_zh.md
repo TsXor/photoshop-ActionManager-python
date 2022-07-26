@@ -1,11 +1,11 @@
 # photoshop-ActionManager-python
-## [简体中文](https://github.com/TsXor/photoshop-ActionManager-python/blob/main/README_zh.md)
-## Why this thing is written
-ActionManager is often referred to as "the black magic of photoshop scripting", and ScriptListener Plug-in contributes a lot in making such a reputation.  
-I am not saying that ScriptListener Plug-in is not useful. It can just create scripts that can just work --- even after you replace some of the numbers in the script with variables. What I want to say is that the ScriptListener Plug-in actually blocks us from **understanding** the real thing --- how ActionManager works by making the generated scripts filled with fkng abbreviated nicknames and conversion between strings and typeids.  
-At the same time, there are so much scripts like this in https://github.com/lohriialo/photoshop-scripting-python/ and https://loonghao.github.io/photoshop-python-api/examples/.  
-I really don't know what to say! The fkng codestyle of the ScriptListener Plug-in actually covers up all logics!  
-See this piece of code from https://loonghao.github.io/photoshop-python-api/examples/#emboss-action:
+## [English](https://github.com/TsXor/photoshop-ActionManager-python/blob/main/README.md)
+## 为什么要写这玩意
+ActionManager常被称为"编写ps脚本的黑魔法"，而ScriptListener Plug-in是塑造这种印象的主要因素之一。  
+我并不是说ScriptListener Plug-in不好用。它就是能整出正好能用的脚本，就是你把一部分数字换成变量也能正常工作。但我想说的是，ScriptListener Plug-in将它生成的脚本塞满tmd缩写代号和字符串转typeid的行为其实在妨碍我们**理解**真正该理解的——ActionManager如何运行。  
+在这种“不求甚解”的影响下，https://github.com/lohriialo/photoshop-scripting-python/ 和 https://loonghao.github.io/photoshop-python-api/examples/ 中都有很多这种脚本。  
+给我整无语了！ScriptListener Plug-in的tmd代码风格遮掩了一切逻辑！  
+看看https://loonghao.github.io/photoshop-python-api/examples/#emboss-action 中截取的这段代码：
 ```python
 index = 0
 idMk = app.charIDToTypeID("Mk  ")
@@ -34,11 +34,11 @@ desc22.putObject(idType, idSolidColorLayer, desc23)
 idContentLayer2 = app.StringIDToTypeID("contentLayer")
 desc21.putObject(idUsng, idContentLayer2, desc22)
 ```
-This is way too abstract.  
-And... What if I can see them this way:  
+太抽象了家人们！  
+但如果用这种方式看呢？  
 ```python
-#This is what the inner things of desc21 looks like
-#That 'grain' is NOT MY TYPO
+#这就是desc21的内部组成
+#'grain'不是我打错了
 {
   'null': Reference{
     'DesiredClass': 'contentLayer',
@@ -55,8 +55,9 @@ And... What if I can see them this way:
   }
 }
 ```
-After importing the `ActionManager.py`, you can manage ActionDescriptor like dicts, ActionList like lists.
-Here is another example of an ActionDescriptor shown in a more friendly way:
+这就是为什么要写这玩意。  
+import `ActionManager.py`，即可像字典一样操控ActionDescriptor、像列表一样操控ActionList（受限，详情看文档）。  
+这是另一个以更加友好的方式展示的ActionDescriptor：  
 ```python
 {
   'textKey': 'somewhat text',
@@ -89,5 +90,5 @@ Here is another example of an ActionDescriptor shown in a more friendly way:
   ]
 }
 ```
-## How to use
-See [this](https://github.com/TsXor/photoshop-ActionManager-python/blob/main/usage_en.md).
+## 如何使用
+请看[这里](https://github.com/TsXor/photoshop-ActionManager-python/blob/main/usage_zh.md)
