@@ -1,0 +1,1 @@
+You may machine translate usage_zh, but I am a bit of lazy now.
