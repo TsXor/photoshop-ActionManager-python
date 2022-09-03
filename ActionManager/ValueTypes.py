@@ -70,18 +70,14 @@ class ReferenceKey(ReferenceKey_proto):
   def _packer(cls, obj):
     ftype = psreftype2str[obj.getForm()]
     dcls = id2str(obj.getDesiredClass())
-    try:
-      get_func = getattr(obj, 'get'+ftype)
-    except:
-      get_func = None
     if ftype == 'Class':
       v = None
     elif ftype == 'Enumerated':
-      v = Enumerated(id2str(obj.getEnumeratedType()), id2str(obj.getEnumeratedValue))
+      v = Enumerated(id2str(obj.getEnumeratedType()), id2str(obj.getEnumeratedValue()))
     elif ftype == 'Property':
       v = TypeID(id2str(obj.getProperty()))
     elif ftype == 'Name':
-      v = get_func()
+      v = obj.getName()
     elif ftype in ('Identifier', 'Index', 'Offset'):
       v = globals()[ftype]+get_func()
     return cls(dcls, v)

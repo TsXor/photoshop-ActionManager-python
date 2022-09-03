@@ -31,5 +31,4 @@ def str2id(psstr: str) -> str:
 
 def id2str(typeid: int) -> str:
   '''Convert typeID to stringID'''
-  psstr = app.typeIDToStringID(typeid)
-  return psstr
+  return app.typeIDToStringID(typeid)
