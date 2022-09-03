@@ -3,12 +3,13 @@ import photoshop.api as ps
 __all__ = ['str2id', 'id2str']
 app = ps.Application()
 
-def chr2id(x: str) -> int:
+def str2hash(x: str) -> int:
   '''Convert charID to typeID.'''
   assert len(x) == 4
-  return int.from_bytes(bytes(x, encoding='ascii'), byteorder='big')
+  x = x.replace(' ', '\x20')
+  return int.from_bytes(bytes(x, encoding='utf-8'), byteorder='big')
 
-def id2chr(x: int) -> str:
+def hash2str(x: int) -> str:
   '''Convert typeID to charID.'''
   assert len(hex(x)) == 10
   return x.to_bytes(length=4, byteorder='big').decode()
@@ -17,7 +18,7 @@ def str2id(psstr: str) -> str:
   '''Convert charID or stringID to typeID'''
   assert type(psstr) == str
   if len(psstr) == 4:
-    typeid = chr2id(psstr)
+    typeid = str2hash(psstr)
     try:
       restr = app.typeIDToStringID(psstr)
     except:

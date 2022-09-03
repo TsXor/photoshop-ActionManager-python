@@ -1,5 +1,5 @@
 #You may turn on syntax highlighting for js here.
-hack = '''
+injection = '''
 
 class UnitDouble {
 	constructor(unit,ndouble) {
@@ -17,11 +17,18 @@ class Enumerated {
 	}
 }
 
+class TypeID {
+	constructor(string) {
+		this.type = 'TypeID'
+		this.string = string
+	}
+}
+
 function charIDToTypeID(chr) {
 	return 'CharID_'+chr
 }
 function stringIDToTypeID(str) {
-	return str
+	return 'StrnID_'+str
 }
 
 class ActionDescriptor {
@@ -35,7 +42,7 @@ class ActionDescriptor {
 	putObject(key,psclass,val) {val['_classID'] = psclass; this[key] = val}
 	putReference(key,val) {this[key] = val}
 	putList(key,val) {this[key] = val}
-	putClass(key,val) {this[key] = val}
+	putClass(key,val) {this[key] = new TypeID(val)}
 }
 
 class ActionList {
@@ -49,7 +56,7 @@ class ActionList {
 	putObject(psclass,val) {this.len += 1; val['_classID'] = psclass; this[this.len-1] = val}
 	putReference(val) {this.len += 1; this[this.len-1] = val}
 	putList(val) {this.len += 1; this[this.len-1] = val}
-	putClass(val) {this.len += 1; this[this.len-1] = val}
+	putClass(val) {this.len += 1; this[this.len-1] = new TypeID(val)}
 }
 
 class ActionReference {
@@ -59,7 +66,7 @@ class ActionReference {
 		this[this.len-1] = {
 			'DesiredClass':dcls,
 			'FormType':'Class',
-			'Value':'',
+			'Value':null,
 		}
 	}
 	putEnumerated(dcls,enumtype,enumval) {

@@ -76,7 +76,7 @@ class ActionDescriptorPy(AD):
   def dump(self):
     #This is a dict comprehension.
     ddict = {'_classID':self.classID}
-    ddict.update({key:(self.uget(key).dump() if hasattr(self.uget(key), 'dump') else self.uget(key)) for key in self})
+    ddict.update({key:(value.dump() if hasattr(value := self.uget(key), 'dump') else value) for key in self})
     return ddict
 
 class ActionDescriptorPy_Iterator:
