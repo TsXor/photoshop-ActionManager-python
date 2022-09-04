@@ -181,7 +181,7 @@ class ActionListPy(AL):
   def uput(self,val):
     typestr, args = unpack(val)
     #ActionList type checking
-    assert True if self.dtype == None else self.dtype == typestr, \
+    assert True if (dtype := self.dtype) is None else dtype == typestr, \
       'ActionList can only hold things of the same type'
     put_func = getattr(self, 'put'+typestr)
     put_func(*args)
