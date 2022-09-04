@@ -1,8 +1,7 @@
-from ActionManager.jscompat.node_execjs import execjs
-from ActionManager.jscompat.injection_js import injection
-from ActionManager._utils import str2id, id2str, str2hash, hash2str
-from copy import *
-from ActionManager import *
+from .node_execjs import execjs
+from .injection_js import injection
+from .._utils import str2id, id2str, str2hash, hash2str
+from ..ValueTypes import *
 import json
 
 def toid(string):

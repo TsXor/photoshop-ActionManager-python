@@ -1,5 +1,5 @@
 import sys
-from ActionManager.jscompat.convert import dump
+from ActionManager.jscompat import dump
 from ActionManager import jprint
 
 if __name__ == '__main__':

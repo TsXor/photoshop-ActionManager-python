@@ -2,8 +2,8 @@
 Defines some descriptors and references that are frequently used.
 '''
 
-from ActionManager.ActionTypes import *
-from ActionManager.ValueTypes import *
+from .ActionTypes import *
+from .ValueTypes import *
 
 # Note about references.
 # References points to an object which matches the information inside itself.

@@ -1,7 +1,7 @@
 import photoshop.api as ps
-from ActionManager.ValueTypes import *
-from ActionManager.type_mapper import *
-from ActionManager._utils import *
+from .ValueTypes import *
+from .type_mapper import *
+from ._utils import *
 
 __all__ = ['ActionDescriptorPy', 'ActionListPy', 'ActionReferencePy']
 
@@ -27,14 +27,7 @@ class ActionDescriptorPy(AD):
     for k,v in adict.items():
       if k == '_classID':
         continue
-      if type(v) == dict:
-        v = ActionDescriptorPy.load(v)
-      elif type(v) == list:
-        first = v[0] if v else None
-        if first == '!ref':
-          v = ActionReferencePy.load(v)
-        else:
-          v = ActionListPy.load(v)
+      v = v if (dtype := parsetype(v)) == 'others' else globals()[dtype+'Py'].load(v)
       new.uput(k,v)
     return new
   def __init__(self, classID=None, parent=None):
@@ -153,14 +146,7 @@ class ActionListPy(AL):
   def load(cls, alist):
     new = cls()
     for v in alist:
-      if type(v) == dict:
-        v = ActionDescriptorPy.load(v)
-      elif type(v) == list:
-        first = v[0] if v else None
-        if first == '!ref':
-          v = ActionReferencePy.load(v)
-        else:
-          v = ActionListPy.load(v)
+      v = v if (dtype := parsetype(v)) == 'others' else globals()[dtype+'Py'].load(v)
       new.uput(v)
     return new
   def __init__(self, parent=None):
@@ -174,7 +160,6 @@ class ActionListPy(AL):
     return typestr
   def uget(self,index):
     val = pack(self, index)
-    print(val)
     if hasattr(val, 'typename'):
       val = globals()[val.typename+'Py'].inherit(val)  #delete 'Py' on integration
     return val

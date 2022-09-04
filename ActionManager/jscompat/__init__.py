@@ -1,1 +1,1 @@
-from ActionManager.jscompat.convert import dump
+from .convert import dump

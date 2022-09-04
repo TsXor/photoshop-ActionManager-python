@@ -1,5 +1,5 @@
 import photoshop.api as ps
-from ActionManager._utils import *
+from ._utils import *
 from collections import namedtuple
 
 __all__ = ['UnitDouble', 'Enumerated', 'TypeID', 'Identifier', 'Index', 'Offset', 'ReferenceKey']

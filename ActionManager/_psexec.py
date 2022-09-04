@@ -1,5 +1,5 @@
 import photoshop.api as ps
-from ActionManager.ActionTypes import ActionDescriptorPy
+from .ActionTypes import ActionDescriptorPy
 
 __all__ = ['exec', 'get']
 app = None

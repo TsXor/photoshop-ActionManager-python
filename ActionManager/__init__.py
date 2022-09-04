@@ -1,9 +1,9 @@
-from ActionManager.ValueTypes import *
-from ActionManager.ActionTypes import *
-from ActionManager._psexec import *
-from ActionManager.jprint import *
-import ActionManager.macro
-import ActionManager.jscompat
+from .ValueTypes import *
+from .ActionTypes import *
+from ._psexec import *
+from .jprint import *
+from . import macro
+from . import jscompat
 
 __all__ = [
     "ActionDescriptorPy",

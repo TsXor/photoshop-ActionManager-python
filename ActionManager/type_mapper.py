@@ -1,8 +1,8 @@
 import photoshop.api as ps
-from ActionManager.ValueTypes import *
-from ActionManager._utils import *
+from .ValueTypes import *
+from ._utils import *
 
-__all__ = ['unpack', 'pack']
+__all__ = ['unpack', 'pack', 'parsetype']
 
 pytype2str = {
     bool:'Boolean',
@@ -49,3 +49,16 @@ def pack(obj, index):  # "index" means id of key string or list index.
     get_func = getattr(obj, 'get'+typestr)
     val = get_func(index)
   return val
+
+def parsetype(obj):
+  if type(obj) == dict:
+    dtype = 'ActionDescriptor'
+  elif type(obj) == list:
+    first = obj[0] if obj else None
+    if first == '!ref':
+      dtype = 'ActionReference'
+    else:
+      dtype = 'ActionList'
+  else:
+    dtype = 'others'
+  return dtype
