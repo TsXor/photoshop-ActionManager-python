@@ -1,3 +1,6 @@
+# 已归档
+已经可以用于实践了： https://github.com/TsXor/photoshop-python-api/tree/action_manager_module_integration
+
 # photoshop-ActionManager-python
 ## [English](https://github.com/TsXor/photoshop-ActionManager-python/blob/main/README.md)
 ## 为什么要写这玩意
