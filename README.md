@@ -1,3 +1,6 @@
+# Archived
+It's ready to use at https://github.com/TsXor/photoshop-python-api/tree/action_manager_module_integration.
+
 # photoshop-ActionManager-python
 ## [简体中文](https://github.com/TsXor/photoshop-ActionManager-python/blob/main/README_zh.md)
 ## Why this thing is written
